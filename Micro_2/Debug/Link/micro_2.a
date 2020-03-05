@@ -58,8 +58,8 @@
 ;PCODE: $00000015 VOL: 0
 ; 0000 0018 
 ; 0000 0019 // Port C initialization
-; 0000 001A // Function: Bit7=Out Bit6=Out Bit5=Out Bit4=Out Bit3=Out Bit2=Out Bit1=Out Bit0=Out
-; 0000 001B DDRC=(1<<DDC7) | (1<<DDC6) | (1<<DDC5) | (1<<DDC4) | (1<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
+; 0000 001A // Function: Bit7=In Bit6=In Bit5=In Bit4=In Bit3=In Bit2=In Bit1=In Bit0=In
+; 0000 001B DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (0<<DDC2) | (0<<DDC1) | (0<<DDC0);
 ;PCODE: $00000016 VOL: 0
 ;PCODE: $00000017 VOL: 0
 ; 0000 001C // State: Bit7=0 Bit6=0 Bit5=0 Bit4=0 Bit3=0 Bit2=0 Bit1=0 Bit0=0
@@ -68,8 +68,8 @@
 ;PCODE: $00000019 VOL: 0
 ; 0000 001E 
 ; 0000 001F // Port D initialization
-; 0000 0020 // Function: Bit7=In Bit6=In Bit5=In Bit4=In Bit3=In Bit2=In Bit1=In Bit0=In
-; 0000 0021 DDRD=(0<<DDD7) | (0<<DDD6) | (0<<DDD5) | (0<<DDD4) | (0<<DDD3) | (0<<DDD2) | (0<<DDD1) | (0<<DDD0);
+; 0000 0020 // Function: Bit7=Out Bit6=Out Bit5=Out Bit4=Out Bit3=Out Bit2=Out Bit1=Out Bit0=Out
+; 0000 0021 DDRD=(1<<DDD7) | (1<<DDD6) | (1<<DDD5) | (1<<DDD4) | (1<<DDD3) | (1<<DDD2) | (1<<DDD1) | (1<<DDD0);
 ;PCODE: $0000001A VOL: 0
 ;PCODE: $0000001B VOL: 0
 ; 0000 0022 // State: Bit7=T Bit6=T Bit5=T Bit4=T Bit3=T Bit2=T Bit1=T Bit0=T
@@ -266,7 +266,7 @@
 ; 0000 0073             }
 ; 0000 0074 
 ; 0000 0075 
-; 0000 0076             PORTC = conteo;
+; 0000 0076             PORTD = conteo;
 ;PCODE: $0000008A VOL: 0
 ;PCODE: $0000008B VOL: 0
 ;PCODE: $0000008C VOL: 0
@@ -287,7 +287,7 @@
 ; 0000 007B             PORTA.3 = 0;
 ;PCODE: $00000097 VOL: 0
 ;PCODE: $00000098 VOL: 0
-; 0000 007C             PORTC = 0;
+; 0000 007C             PORTD = 0;
 ;PCODE: $00000099 VOL: 0
 ;PCODE: $0000009A VOL: 0
 ; 0000 007D             conteo = 0;
