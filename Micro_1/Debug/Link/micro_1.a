@@ -296,43 +296,21 @@
 ;PCODE: $0000007D VOL: 0
 ; 0000 009E         }
 ; 0000 009F 
-; 0000 00A0         if((PINB & 0x0f) == 11 ){
+; 0000 00A0         /*if((PINB & 0x0f) == 11 ){
+; 0000 00A1             PORTA.1 = 0;
+; 0000 00A2             while((PINB & 0x0f) == 11 ){
+; 0000 00A3                 PORTA.0 = 0;
+; 0000 00A4                 delay_us(1);
+; 0000 00A5                 PORTA.0 = 1;
+; 0000 00A6                 delay_us(60);
+; 0000 00A7             }
+; 0000 00A8             PORTA.1 = 1;
+; 0000 00A9         }*/
+; 0000 00AA     }
 ;PCODE: $0000007E VOL: 0
 ;PCODE: $0000007F VOL: 0
 ;PCODE: $00000080 VOL: 0
+; 0000 00AB }
 ;PCODE: $00000081 VOL: 0
 ;PCODE: $00000082 VOL: 0
-; 0000 00A1             PORTA.1 = 0;
 ;PCODE: $00000083 VOL: 0
-;PCODE: $00000084 VOL: 0
-; 0000 00A2             while((PINB & 0x0f) == 11 ){
-;PCODE: $00000085 VOL: 0
-;PCODE: $00000086 VOL: 0
-;PCODE: $00000087 VOL: 0
-;PCODE: $00000088 VOL: 0
-;PCODE: $00000089 VOL: 0
-; 0000 00A3                 PORTA.0 = 0;
-;PCODE: $0000008A VOL: 0
-;PCODE: $0000008B VOL: 0
-; 0000 00A4                 delay_us(1);
-;PCODE: $0000008C VOL: 0
-; 0000 00A5                 PORTA.0 = 1;
-;PCODE: $0000008D VOL: 0
-;PCODE: $0000008E VOL: 0
-; 0000 00A6                 delay_us(60);
-;PCODE: $0000008F VOL: 0
-; 0000 00A7             }
-;PCODE: $00000090 VOL: 0
-;PCODE: $00000091 VOL: 0
-; 0000 00A8             PORTA.1 = 1;
-;PCODE: $00000092 VOL: 0
-;PCODE: $00000093 VOL: 0
-; 0000 00A9         }
-; 0000 00AA     }
-;PCODE: $00000094 VOL: 0
-;PCODE: $00000095 VOL: 0
-;PCODE: $00000096 VOL: 0
-; 0000 00AB }
-;PCODE: $00000097 VOL: 0
-;PCODE: $00000098 VOL: 0
-;PCODE: $00000099 VOL: 0

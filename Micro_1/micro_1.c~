@@ -154,7 +154,17 @@ TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
                 PORTA.0 = 1;
                 delay_us(45);                
             }
-            
+            PORTA.1 = 1;        
+        }
+        
+        if((PINB & 0x0f) == 11 ){
+            PORTA.1 = 0;
+            while((PINB & 0x0f) == 11 ){
+                PORTA.0 = 0;
+                delay_us(1);
+                PORTA.0 = 1;
+                delay_us(60);                
+            }
             PORTA.1 = 1;        
         }
     }
