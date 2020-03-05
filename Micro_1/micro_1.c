@@ -1,9 +1,30 @@
+/*******************************************************
+This program was created by the CodeWizardAVR V3.39 
+Automatic Program Generator
+© Copyright 1998-2020 Pavel Haiduc, HP InfoTech s.r.l.
+http://www.hpinfotech.ro
 
+Project : 
+Version : 
+Date    : 3/4/2020
+Author  : 
+Company : 
+Comments: 
+
+
+Chip type               : ATmega8535L
+Program type            : Application
+AVR Core Clock frequency: 1.000000 MHz
+Memory model            : Small
+External RAM size       : 0
+Data Stack size         : 128
+*******************************************************/
 
 #include <mega8535.h>
 #include <delay.h>
-char i=0;
-unsigned int conteo=0;
+#define entrada PINB
+
+// Declare your global variables here
 
 void main(void)
 {
@@ -11,21 +32,21 @@ void main(void)
 
 // Input/Output Ports initialization
 // Port A initialization
-// Function: Bit7=Out Bit6=Out Bit5=Out Bit4=Out Bit3=Out Bit2=Out Bit1=Out Bit0=Out 
-DDRA=(1<<DDA7) | (1<<DDA6) | (1<<DDA5) | (1<<DDA4) | (1<<DDA3) | (1<<DDA2) | (1<<DDA1) | (1<<DDA0);
-// State: Bit7=T Bit6=T Bit5=T Bit4=T Bit3=0 Bit2=0 Bit1=0 Bit0=0 
-PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
+// Function: Bit7=In Bit6=In Bit5=In Bit4=In Bit3=In Bit2=In Bit1=Out Bit0=Out 
+DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (1<<DDA1) | (1<<DDA0);
+// State: Bit7=T Bit6=T Bit5=T Bit4=T Bit3=T Bit2=T Bit1=1 Bit0=1 
+PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (1<<PORTA1) | (1<<PORTA0);
 
 // Port B initialization
 // Function: Bit7=In Bit6=In Bit5=In Bit4=In Bit3=In Bit2=In Bit1=In Bit0=In 
 DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
-// State: Bit7=T Bit6=T Bit5=T Bit4=T Bit3=T Bit2=T Bit1=P Bit0=P  
-PORTB=(0<<PORTB7) | (0<<PORTB6) | (0<<PORTB5) | (0<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (1<<PORTB1) | (1<<PORTB0);
+// State: Bit7=T Bit6=T Bit5=T Bit4=T Bit3=P Bit2=P Bit1=P Bit0=P 
+PORTB=(0<<PORTB7) | (0<<PORTB6) | (0<<PORTB5) | (0<<PORTB4) | (1<<PORTB3) | (1<<PORTB2) | (1<<PORTB1) | (1<<PORTB0);
 
 // Port C initialization
-// Function: Bit7=Out Bit6=Out Bit5=Out Bit4=Out Bit3=Out Bit2=Out Bit1=Out Bit0=Out 
-DDRC=(1<<DDC7) | (1<<DDC6) | (1<<DDC5) | (1<<DDC4) | (1<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
-// State: Bit7=0 Bit6=0 Bit5=0 Bit4=0 Bit3=0 Bit2=0 Bit1=0 Bit0=0 
+// Function: Bit7=In Bit6=In Bit5=In Bit4=In Bit3=In Bit2=In Bit1=In Bit0=In 
+DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (0<<DDC2) | (0<<DDC1) | (0<<DDC0);
+// State: Bit7=T Bit6=T Bit5=T Bit4=T Bit3=T Bit2=T Bit1=T Bit0=T 
 PORTC=(0<<PORTC7) | (0<<PORTC6) | (0<<PORTC5) | (0<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
 
 // Port D initialization
@@ -34,11 +55,27 @@ DDRD=(0<<DDD7) | (0<<DDD6) | (0<<DDD5) | (0<<DDD4) | (0<<DDD3) | (0<<DDD2) | (0<
 // State: Bit7=T Bit6=T Bit5=T Bit4=T Bit3=T Bit2=T Bit1=T Bit0=T 
 PORTD=(0<<PORTD7) | (0<<PORTD6) | (0<<PORTD5) | (0<<PORTD4) | (0<<PORTD3) | (0<<PORTD2) | (0<<PORTD1) | (0<<PORTD0);
 
-
+// Timer/Counter 0 initialization
+// Clock source: System Clock
+// Clock value: Timer 0 Stopped
+// Mode: Normal top=0xFF
+// OC0 output: Disconnected
 TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (0<<CS02) | (0<<CS01) | (0<<CS00);
 TCNT0=0x00;
 OCR0=0x00;
 
+// Timer/Counter 1 initialization
+// Clock source: System Clock
+// Clock value: Timer1 Stopped
+// Mode: Normal top=0xFFFF
+// OC1A output: Disconnected
+// OC1B output: Disconnected
+// Noise Canceler: Off
+// Input Capture on Falling Edge
+// Timer1 Overflow Interrupt: Off
+// Input Capture Interrupt: Off
+// Compare A Match Interrupt: Off
+// Compare B Match Interrupt: Off
 TCCR1A=(0<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<WGM11) | (0<<WGM10);
 TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (0<<WGM12) | (0<<CS12) | (0<<CS11) | (0<<CS10);
 TCNT1H=0x00;
@@ -95,38 +132,40 @@ SPCR=(0<<SPIE) | (0<<SPE) | (0<<DORD) | (0<<MSTR) | (0<<CPOL) | (0<<CPHA) | (0<<
 // TWI disabled
 TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
 
-    while (1){  
-    
-        if(PINB.1 == 0){
+    while (1){
         
-            for(i = 0; i < 255; i++){  
-                if(PINB.0 == 0)
-                    ++conteo;
-                
-                delay_us(29);
-            }
-            
-            if(conteo >= 70){
-               PORTA.0 = 1;
-            }else if(conteo >= 20 && conteo < 70){
-                PORTA.1 = 1;
-            }else if(conteo >= 4 && conteo < 20){
-                PORTA.2 = 1;
-            }
-        
-            
-            PORTC = conteo;
-            delay_ms(1000);
-            PORTA.0 = 0;
+        if((PINB & 0x0f) == 14 ){
             PORTA.1 = 0;
-            PORTA.2 = 0;
-            PORTA.3 = 0;
-            PORTC = 0;  
-            conteo = 0;    
-        }else {
-            conteo = 0;
-            PORTC = 0;
-            PORTA = 0;
+            while((PINB & 0x0f) == 14 ){
+                PORTA.0 = 0;
+                delay_us(1);
+                PORTA.0 = 1;
+                delay_us(30);                
+            }
+            
+            PORTA.1 = 1;        
+        }
+        
+        if((PINB & 0x0f) == 13 ){
+            PORTA.1 = 0;
+            while((PINB & 0x0f) == 13 ){
+                PORTA.0 = 0;
+                delay_us(1);
+                PORTA.0 = 1;
+                delay_us(45);                
+            }
+            PORTA.1 = 1;        
+        }
+        
+        if((PINB & 0x0f) == 11 ){
+            PORTA.1 = 0;
+            while((PINB & 0x0f) == 11 ){
+                PORTA.0 = 0;
+                delay_us(1);
+                PORTA.0 = 1;
+                delay_us(60);                
+            }
+            PORTA.1 = 1;        
         }
     }
 }
