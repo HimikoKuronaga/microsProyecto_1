@@ -140,30 +140,41 @@ TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
                 PORTA.0 = 0;
                 delay_us(1);
                 PORTA.0 = 1;
-                delay_us(30);                
+                delay_us(16);                
             }
             
             PORTA.1 = 1;        
         }
         
-        if((PINB & 0x0f) == 13 ){
+        else if((PINB & 0x0f) == 13 ){
             PORTA.1 = 0;
             while((PINB & 0x0f) == 13 ){
-                PORTA.0 = 0;
+                PORTA.0 = 0;    
                 delay_us(1);
                 PORTA.0 = 1;
-                delay_us(45);                
+                delay_us(74);                
             }
             PORTA.1 = 1;        
         }
         
-        if((PINB & 0x0f) == 11 ){
+        else if((PINB & 0x0f) == 11 ){
             PORTA.1 = 0;
             while((PINB & 0x0f) == 11 ){
                 PORTA.0 = 0;
                 delay_us(1);
                 PORTA.0 = 1;
-                delay_us(60);                
+                delay_us(197);                
+            }
+            PORTA.1 = 1;        
+        }
+        
+        else if((PINB & 0x0f) == 7 ){
+            PORTA.1 = 0;
+            while((PINB & 0x0f) == 7 ){
+                PORTA.0 = 0;
+                delay_us(1);
+                PORTA.0 = 1;
+                delay_us(373);                
             }
             PORTA.1 = 1;        
         }

@@ -252,7 +252,7 @@
 ; 0000 008E                 PORTA.0 = 1;
 ;PCODE: $00000061 VOL: 0
 ;PCODE: $00000062 VOL: 0
-; 0000 008F                 delay_us(30);
+; 0000 008F                 delay_us(16);
 ;PCODE: $00000063 VOL: 0
 ; 0000 0090             }
 ;PCODE: $00000064 VOL: 0
@@ -263,54 +263,115 @@
 ;PCODE: $00000067 VOL: 0
 ; 0000 0093         }
 ; 0000 0094 
-; 0000 0095         if((PINB & 0x0f) == 13 ){
+; 0000 0095         else if((PINB & 0x0f) == 13 ){
 ;PCODE: $00000068 VOL: 0
 ;PCODE: $00000069 VOL: 0
 ;PCODE: $0000006A VOL: 0
 ;PCODE: $0000006B VOL: 0
 ;PCODE: $0000006C VOL: 0
-; 0000 0096             PORTA.1 = 0;
 ;PCODE: $0000006D VOL: 0
+; 0000 0096             PORTA.1 = 0;
 ;PCODE: $0000006E VOL: 0
-; 0000 0097             while((PINB & 0x0f) == 13 ){
 ;PCODE: $0000006F VOL: 0
+; 0000 0097             while((PINB & 0x0f) == 13 ){
 ;PCODE: $00000070 VOL: 0
 ;PCODE: $00000071 VOL: 0
 ;PCODE: $00000072 VOL: 0
 ;PCODE: $00000073 VOL: 0
-; 0000 0098                 PORTA.0 = 0;
 ;PCODE: $00000074 VOL: 0
+; 0000 0098                 PORTA.0 = 0;
 ;PCODE: $00000075 VOL: 0
-; 0000 0099                 delay_us(1);
 ;PCODE: $00000076 VOL: 0
-; 0000 009A                 PORTA.0 = 1;
+; 0000 0099                 delay_us(1);
 ;PCODE: $00000077 VOL: 0
+; 0000 009A                 PORTA.0 = 1;
 ;PCODE: $00000078 VOL: 0
-; 0000 009B                 delay_us(45);
 ;PCODE: $00000079 VOL: 0
-; 0000 009C             }
+; 0000 009B                 delay_us(74);
 ;PCODE: $0000007A VOL: 0
+; 0000 009C             }
 ;PCODE: $0000007B VOL: 0
-; 0000 009D             PORTA.1 = 1;
 ;PCODE: $0000007C VOL: 0
+; 0000 009D             PORTA.1 = 1;
 ;PCODE: $0000007D VOL: 0
+;PCODE: $0000007E VOL: 0
 ; 0000 009E         }
 ; 0000 009F 
-; 0000 00A0         /*if((PINB & 0x0f) == 11 ){
-; 0000 00A1             PORTA.1 = 0;
-; 0000 00A2             while((PINB & 0x0f) == 11 ){
-; 0000 00A3                 PORTA.0 = 0;
-; 0000 00A4                 delay_us(1);
-; 0000 00A5                 PORTA.0 = 1;
-; 0000 00A6                 delay_us(60);
-; 0000 00A7             }
-; 0000 00A8             PORTA.1 = 1;
-; 0000 00A9         }*/
-; 0000 00AA     }
-;PCODE: $0000007E VOL: 0
+; 0000 00A0         else if((PINB & 0x0f) == 11 ){
 ;PCODE: $0000007F VOL: 0
 ;PCODE: $00000080 VOL: 0
-; 0000 00AB }
 ;PCODE: $00000081 VOL: 0
 ;PCODE: $00000082 VOL: 0
 ;PCODE: $00000083 VOL: 0
+;PCODE: $00000084 VOL: 0
+; 0000 00A1             PORTA.1 = 0;
+;PCODE: $00000085 VOL: 0
+;PCODE: $00000086 VOL: 0
+; 0000 00A2             while((PINB & 0x0f) == 11 ){
+;PCODE: $00000087 VOL: 0
+;PCODE: $00000088 VOL: 0
+;PCODE: $00000089 VOL: 0
+;PCODE: $0000008A VOL: 0
+;PCODE: $0000008B VOL: 0
+; 0000 00A3                 PORTA.0 = 0;
+;PCODE: $0000008C VOL: 0
+;PCODE: $0000008D VOL: 0
+; 0000 00A4                 delay_us(1);
+;PCODE: $0000008E VOL: 0
+; 0000 00A5                 PORTA.0 = 1;
+;PCODE: $0000008F VOL: 0
+;PCODE: $00000090 VOL: 0
+; 0000 00A6                 delay_us(196);
+;PCODE: $00000091 VOL: 0
+; 0000 00A7             }
+;PCODE: $00000092 VOL: 0
+;PCODE: $00000093 VOL: 0
+; 0000 00A8             PORTA.1 = 1;
+;PCODE: $00000094 VOL: 0
+;PCODE: $00000095 VOL: 0
+; 0000 00A9         }
+; 0000 00AA 
+; 0000 00AB         else if((PINB & 0x0f) == 7 ){
+;PCODE: $00000096 VOL: 0
+;PCODE: $00000097 VOL: 0
+;PCODE: $00000098 VOL: 0
+;PCODE: $00000099 VOL: 0
+;PCODE: $0000009A VOL: 0
+;PCODE: $0000009B VOL: 0
+; 0000 00AC             PORTA.1 = 0;
+;PCODE: $0000009C VOL: 0
+;PCODE: $0000009D VOL: 0
+; 0000 00AD             while((PINB & 0x0f) == 7 ){
+;PCODE: $0000009E VOL: 0
+;PCODE: $0000009F VOL: 0
+;PCODE: $000000A0 VOL: 0
+;PCODE: $000000A1 VOL: 0
+;PCODE: $000000A2 VOL: 0
+; 0000 00AE                 PORTA.0 = 0;
+;PCODE: $000000A3 VOL: 0
+;PCODE: $000000A4 VOL: 0
+; 0000 00AF                 delay_us(1);
+;PCODE: $000000A5 VOL: 0
+; 0000 00B0                 PORTA.0 = 1;
+;PCODE: $000000A6 VOL: 0
+;PCODE: $000000A7 VOL: 0
+; 0000 00B1                 delay_us(373);
+;PCODE: $000000A8 VOL: 0
+; 0000 00B2             }
+;PCODE: $000000A9 VOL: 0
+;PCODE: $000000AA VOL: 0
+; 0000 00B3             PORTA.1 = 1;
+;PCODE: $000000AB VOL: 0
+;PCODE: $000000AC VOL: 0
+; 0000 00B4         }
+; 0000 00B5     }
+;PCODE: $000000AD VOL: 0
+;PCODE: $000000AE VOL: 0
+;PCODE: $000000AF VOL: 0
+;PCODE: $000000B0 VOL: 0
+;PCODE: $000000B1 VOL: 0
+;PCODE: $000000B2 VOL: 0
+; 0000 00B6 }
+;PCODE: $000000B3 VOL: 0
+;PCODE: $000000B4 VOL: 0
+;PCODE: $000000B5 VOL: 0

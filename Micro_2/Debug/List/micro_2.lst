@@ -1,9 +1,9 @@
 
-AVRASM ver. 2.1.30  C:\Users\himik\Desktop\Proyecto\microsProyecto_1\Micro_2\Debug\List\micro_2.asm Thu Mar 05 01:29:26 2020
+AVRASM ver. 2.1.30  C:\Users\himik\Desktop\microsProyecto_1\Micro_2\Debug\List\micro_2.asm Wed Mar 11 00:19:16 2020
 
-C:\Users\himik\Desktop\Proyecto\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(1081): warning: Register r5 already defined by the .DEF directive
-C:\Users\himik\Desktop\Proyecto\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(1082): warning: Register r6 already defined by the .DEF directive
-C:\Users\himik\Desktop\Proyecto\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(1083): warning: Register r7 already defined by the .DEF directive
+C:\Users\himik\Desktop\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(1081): warning: Register r5 already defined by the .DEF directive
+C:\Users\himik\Desktop\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(1082): warning: Register r6 already defined by the .DEF directive
+C:\Users\himik\Desktop\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(1083): warning: Register r7 already defined by the .DEF directive
                  
                  
                  ;CodeVisionAVR C Compiler V3.39 Evaluation
@@ -1121,7 +1121,7 @@ C:\Users\himik\Desktop\Proyecto\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(
                  ;GLOBAL REGISTER VARIABLES INITIALIZATION
                  __REG_VARS:
 000015 0000
-C:\Users\himik\Desktop\Proyecto\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(1116): warning: .cseg .db misalignment - padding zero byte
+C:\Users\himik\Desktop\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(1116): warning: .cseg .db misalignment - padding zero byte
 000016 0000      	.DB  0x0,0x0,0x0
                  
                  
@@ -1366,149 +1366,168 @@ C:\Users\himik\Desktop\Proyecto\microsProyecto_1\Micro_2\Debug\List\micro_2.asm(
                  ; 0000 0063 
                  ; 0000 0064         if(PINB.1 == 0){
 000071 99b1      	SBIC 0x16,1
-000072 c02f      	RJMP _0x6
-                 ; 0000 0065 
-                 ; 0000 0066             for(i = 0; i < 255; i++){
-000073 2455      	CLR  R5
-                 _0x8:
-000074 efef      	LDI  R30,LOW(255)
-000075 165e      	CP   R5,R30
-000076 f450      	BRSH _0x9
-                 ; 0000 0067                 if(PINB.0 == 0)
-000077 99b0      	SBIC 0x16,0
-000078 c003      	RJMP _0xA
-                 ; 0000 0068                     ++conteo;
-000079 01f3      	MOVW R30,R6
-00007a 9631      	ADIW R30,1
-00007b 013f      	MOVW R6,R30
-                 ; 0000 0069 
-                 ; 0000 006A                 delay_us(29);
-                 _0xA:
+000072 c03e      	RJMP _0x6
+                 ; 0000 0065             delay_us(10);
                 +
-00007c e08a     +LDI R24 , LOW ( 10 )
+000073 e083     +LDI R24 , LOW ( 3 )
                 +__DELAY_USB_LOOP :
-00007d 958a     +DEC R24
-00007e f7f1     +BRNE __DELAY_USB_LOOP
-                 	__DELAY_USB 10
-                 ; 0000 006B             }
-00007f 9453      	INC  R5
-000080 cff3      	RJMP _0x8
-                 _0x9:
-                 ; 0000 006C 
-                 ; 0000 006D             if(conteo >= 70){
-000081 d027      	RCALL SUBOPT_0x0
-000082 f010      	BRLO _0xB
-                 ; 0000 006E                PORTA.0 = 1;
-000083 9ad8      	SBI  0x1B,0
-                 ; 0000 006F             }else if(conteo >= 20 && conteo < 70){
-000084 c010      	RJMP _0xE
+000074 958a     +DEC R24
+000075 f7f1     +BRNE __DELAY_USB_LOOP
+                 	__DELAY_USB 3
+                 ; 0000 0066             for(i = 0; i < 255; i++){
+000076 2455      	CLR  R5
+                 _0x8:
+000077 efef      	LDI  R30,LOW(255)
+000078 165e      	CP   R5,R30
+000079 f470      	BRSH _0x9
+                 ; 0000 0067                 if(PINB.0 == 0){
+00007a 99b0      	SBIC 0x16,0
+00007b c007      	RJMP _0xA
+                 ; 0000 0068                     ++conteo;
+00007c 01f3      	MOVW R30,R6
+00007d 9631      	ADIW R30,1
+00007e 013f      	MOVW R6,R30
+                 ; 0000 0069                     delay_us(17);
+                +
+00007f e086     +LDI R24 , LOW ( 6 )
+                +__DELAY_USB_LOOP :
+000080 958a     +DEC R24
+000081 f7f1     +BRNE __DELAY_USB_LOOP
+                 	__DELAY_USB 6
+                 ; 0000 006A                 }else{
+000082 c003      	RJMP _0xB
+                 _0xA:
+                 ; 0000 006B                     delay_us(22);
+                +
+000083 e087     +LDI R24 , LOW ( 7 )
+                +__DELAY_USB_LOOP :
+000084 958a     +DEC R24
+000085 f7f1     +BRNE __DELAY_USB_LOOP
+                 	__DELAY_USB 7
+                 ; 0000 006C                 }
                  _0xB:
-000085 d028      	RCALL SUBOPT_0x1
-000086 f010      	BRLO _0x10
-000087 d021      	RCALL SUBOPT_0x0
-000088 f008      	BRLO _0x11
-                 _0x10:
-000089 c002      	RJMP _0xF
-                 _0x11:
-                 ; 0000 0070                 PORTA.1 = 1;
-00008a 9ad9      	SBI  0x1B,1
-                 ; 0000 0071             }else if(conteo >= 4 && conteo < 20){
-00008b c009      	RJMP _0x14
-                 _0xF:
-00008c e0e4      	LDI  R30,LOW(4)
-00008d e0f0      	LDI  R31,HIGH(4)
+                 ; 0000 006D             }
+000086 9453      	INC  R5
+000087 cfef      	RJMP _0x8
+                 _0x9:
+                 ; 0000 006E 
+                 ; 0000 006F             if(conteo >= 100){
+000088 d02f      	RCALL SUBOPT_0x0
+000089 f010      	BRLO _0xC
+                 ; 0000 0070                PORTA.0 = 1;
+00008a 9ad8      	SBI  0x1B,0
+                 ; 0000 0071             }else if(conteo >= 55 && conteo < 100){
+00008b c018      	RJMP _0xF
+                 _0xC:
+00008c e3e7      	LDI  R30,LOW(55)
+00008d e0f0      	LDI  R31,HIGH(55)
 00008e 166e      	CP   R6,R30
 00008f 067f      	CPC  R7,R31
-000090 f010      	BRLO _0x16
-000091 d01c      	RCALL SUBOPT_0x1
-000092 f008      	BRLO _0x17
-                 _0x16:
-000093 c001      	RJMP _0x15
+000090 f010      	BRLO _0x11
+000091 d026      	RCALL SUBOPT_0x0
+000092 f008      	BRLO _0x12
+                 _0x11:
+000093 c002      	RJMP _0x10
+                 _0x12:
+                 ; 0000 0072                 PORTA.1 = 1;
+000094 9ad9      	SBI  0x1B,1
+                 ; 0000 0073             }else if(conteo >= 10 && conteo < 50){
+000095 c00e      	RJMP _0x15
+                 _0x10:
+000096 e0ea      	LDI  R30,LOW(10)
+000097 e0f0      	LDI  R31,HIGH(10)
+000098 166e      	CP   R6,R30
+000099 067f      	CPC  R7,R31
+00009a f028      	BRLO _0x17
+00009b e3e2      	LDI  R30,LOW(50)
+00009c e0f0      	LDI  R31,HIGH(50)
+00009d 166e      	CP   R6,R30
+00009e 067f      	CPC  R7,R31
+00009f f008      	BRLO _0x18
                  _0x17:
-                 ; 0000 0072                 PORTA.2 = 1;
-000094 9ada      	SBI  0x1B,2
-                 ; 0000 0073             }
-                 ; 0000 0074 
-                 ; 0000 0075 
-                 ; 0000 0076             PORTD = conteo;
+0000a0 c002      	RJMP _0x16
+                 _0x18:
+                 ; 0000 0074                 PORTA.2 = 1;
+0000a1 9ada      	SBI  0x1B,2
+                 ; 0000 0075             }else{
+0000a2 c001      	RJMP _0x1B
+                 _0x16:
+                 ; 0000 0076                 PORTA.3 = 1;
+0000a3 9adb      	SBI  0x1B,3
+                 ; 0000 0077             }
+                 _0x1B:
                  _0x15:
-                 _0x14:
-                 _0xE:
-000095 ba62      	OUT  0x12,R6
-                 ; 0000 0077             delay_ms(1000);
-000096 eea8      	LDI  R26,LOW(1000)
-000097 e0b3      	LDI  R27,HIGH(1000)
-000098 d01a      	RCALL _delay_ms
-                 ; 0000 0078             PORTA.0 = 0;
-000099 98d8      	CBI  0x1B,0
-                 ; 0000 0079             PORTA.1 = 0;
-00009a 98d9      	CBI  0x1B,1
-                 ; 0000 007A             PORTA.2 = 0;
-00009b 98da      	CBI  0x1B,2
-                 ; 0000 007B             PORTA.3 = 0;
-00009c 98db      	CBI  0x1B,3
-                 ; 0000 007C             PORTD = 0;
-00009d e0e0      	LDI  R30,LOW(0)
-00009e bbe2      	OUT  0x12,R30
-                 ; 0000 007D             conteo = 0;
-00009f 2466      	CLR  R6
-0000a0 2477      	CLR  R7
-                 ; 0000 007E         }else {
-0000a1 c005      	RJMP _0x22
+                 _0xF:
+                 ; 0000 0078 
+                 ; 0000 0079 
+                 ; 0000 007A             PORTD = conteo;
+0000a4 ba62      	OUT  0x12,R6
+                 ; 0000 007B             delay_ms(1000);
+0000a5 eea8      	LDI  R26,LOW(1000)
+0000a6 e0b3      	LDI  R27,HIGH(1000)
+0000a7 d015      	RCALL _delay_ms
+                 ; 0000 007C             PORTA.0 = 0;
+0000a8 98d8      	CBI  0x1B,0
+                 ; 0000 007D             PORTA.1 = 0;
+0000a9 98d9      	CBI  0x1B,1
+                 ; 0000 007E             PORTA.2 = 0;
+0000aa 98da      	CBI  0x1B,2
+                 ; 0000 007F             PORTA.3 = 0;
+0000ab 98db      	CBI  0x1B,3
+                 ; 0000 0080             PORTD = 0;
+0000ac e0e0      	LDI  R30,LOW(0)
+0000ad bbe2      	OUT  0x12,R30
+                 ; 0000 0081             conteo = 0;
+0000ae 2466      	CLR  R6
+0000af 2477      	CLR  R7
+                 ; 0000 0082         }else {
+0000b0 c005      	RJMP _0x26
                  _0x6:
-                 ; 0000 007F             conteo = 0;
-0000a2 2466      	CLR  R6
-0000a3 2477      	CLR  R7
-                 ; 0000 0080             PORTC = 0;
-0000a4 e0e0      	LDI  R30,LOW(0)
-0000a5 bbe5      	OUT  0x15,R30
-                 ; 0000 0081             PORTA = 0;
-0000a6 bbeb      	OUT  0x1B,R30
-                 ; 0000 0082         }
-                 _0x22:
-                 ; 0000 0083     }
-0000a7 cfc9      	RJMP _0x3
-                 ; 0000 0084 }
-                 _0x23:
-0000a8 cfff      	RJMP _0x23
+                 ; 0000 0083             conteo = 0;
+0000b1 2466      	CLR  R6
+0000b2 2477      	CLR  R7
+                 ; 0000 0084             PORTC = 0;
+0000b3 e0e0      	LDI  R30,LOW(0)
+0000b4 bbe5      	OUT  0x15,R30
+                 ; 0000 0085             PORTA = 0;
+0000b5 bbeb      	OUT  0x1B,R30
+                 ; 0000 0086         }
+                 _0x26:
+                 ; 0000 0087     }
+0000b6 cfba      	RJMP _0x3
+                 ; 0000 0088 }
+                 _0x27:
+0000b7 cfff      	RJMP _0x27
                  ; .FEND
                  
                  	.CSEG
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
                  SUBOPT_0x0:
-0000a9 e4e6      	LDI  R30,LOW(70)
-0000aa e0f0      	LDI  R31,HIGH(70)
-0000ab 166e      	CP   R6,R30
-0000ac 067f      	CPC  R7,R31
-0000ad 9508      	RET
-                 
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-                 SUBOPT_0x1:
-0000ae e1e4      	LDI  R30,LOW(20)
-0000af e0f0      	LDI  R31,HIGH(20)
-0000b0 166e      	CP   R6,R30
-0000b1 067f      	CPC  R7,R31
-0000b2 9508      	RET
+0000b8 e6e4      	LDI  R30,LOW(100)
+0000b9 e0f0      	LDI  R31,HIGH(100)
+0000ba 166e      	CP   R6,R30
+0000bb 067f      	CPC  R7,R31
+0000bc 9508      	RET
                  
                  ;RUNTIME LIBRARY
                  
                  	.CSEG
                  _delay_ms:
-0000b3 9610      	adiw r26,0
-0000b4 f039      	breq __delay_ms1
+0000bd 9610      	adiw r26,0
+0000be f039      	breq __delay_ms1
                  __delay_ms0:
-0000b5 95a8      	wdr
+0000bf 95a8      	wdr
                 +
-0000b6 ef8a     +LDI R24 , LOW ( 0xFA )
-0000b7 e090     +LDI R25 , HIGH ( 0xFA )
+0000c0 ef8a     +LDI R24 , LOW ( 0xFA )
+0000c1 e090     +LDI R25 , HIGH ( 0xFA )
                 +__DELAY_USW_LOOP :
-0000b8 9701     +SBIW R24 , 1
-0000b9 f7f1     +BRNE __DELAY_USW_LOOP
+0000c2 9701     +SBIW R24 , 1
+0000c3 f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 0xFA
-0000ba 9711      	sbiw r26,1
-0000bb f7c9      	brne __delay_ms0
+0000c4 9711      	sbiw r26,1
+0000c5 f7c9      	brne __delay_ms0
                  __delay_ms1:
-0000bc 9508      	ret
+0000c6 9508      	ret
                  
                  ;END OF CODE MARKER
                  __END_OF_CODE:
@@ -1529,10 +1548,10 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 ATmega8535 register use summary:
-r0 :   4 r1 :   1 r2 :   0 r3 :   0 r4 :   0 r5 :   3 r6 :   8 r7 :   5 
+r0 :   4 r1 :   1 r2 :   0 r3 :   0 r4 :   0 r5 :   3 r6 :   9 r7 :   6 
 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 r13:   0 r14:   0 r15:   0 
 r16:   0 r17:   0 r18:   0 r19:   0 r20:   0 r21:   0 r22:   2 r23:   0 
-r24:  11 r25:   3 r26:   6 r27:   3 r28:   1 r29:   1 r30:  72 r31:   9 
+r24:  15 r25:   3 r26:   6 r27:   3 r28:   1 r29:   1 r30:  74 r31:  11 
 x  :   3 y  :   0 z  :   7 
 Registers used: 16 out of 35 (45.7%)
 
@@ -1541,17 +1560,17 @@ ATmega8535 instruction use summary:
 adiw  :   2 and   :   0 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 
 brbc  :   0 brbs  :   0 brcc  :   0 brcs  :   0 break :   0 breq  :   2 
 brge  :   0 brhc  :   0 brhs  :   0 brid  :   0 brie  :   0 brlo  :   5 
-brlt  :   0 brmi  :   0 brne  :   6 brpl  :   0 brsh  :   1 brtc  :   0 
+brlt  :   0 brmi  :   0 brne  :   8 brpl  :   0 brsh  :   1 brtc  :   0 
 brts  :   0 brvc  :   0 brvs  :   0 bset  :   0 bst   :   0 cbi   :   4 
 cbr   :   0 clc   :   0 clh   :   0 cli   :   1 cln   :   0 clr   :   7 
-cls   :   0 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   4 
-cpc   :   3 cpi   :   0 cpse  :   0 dec   :   2 des   :   0 eor   :   0 
+cls   :   0 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   5 
+cpc   :   4 cpi   :   0 cpse  :   0 dec   :   4 des   :   0 eor   :   0 
 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 
-inc   :   1 ld    :   0 ldd   :   0 ldi   :  34 lds   :   0 lpm   :   7 
+inc   :   1 ld    :   0 ldd   :   0 ldi   :  38 lds   :   0 lpm   :   7 
 lsl   :   0 lsr   :   0 mov   :   0 movw  :   5 mul   :   0 muls  :   0 
 mulsu :   0 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  44 
-pop   :   0 push  :   0 rcall :   5 ret   :   3 reti  :   0 rjmp  :  33 
-rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   2 
+pop   :   0 push  :   0 rcall :   3 ret   :   2 reti  :   0 rjmp  :  35 
+rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   4 sbic  :   2 
 sbis  :   0 sbiw  :   5 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 
 seh   :   0 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 
 sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    :   3 std   :   0 
@@ -1562,7 +1581,7 @@ Instructions used: 24 out of 114 (21.1%)
 ATmega8535 memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00017a    366     12    378    8192   4.6%
+[.cseg] 0x000000 0x00018e    386     12    398    8192   4.9%
 [.dseg] 0x000060 0x0000e0      0      0      0     512   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

@@ -1358,120 +1358,129 @@ _0x3:
 ; 0000 0064         if(PINB.1 == 0){
 	SBIC 0x16,1
 	RJMP _0x6
-; 0000 0065 
+; 0000 0065             delay_us(10);
+	__DELAY_USB 3
 ; 0000 0066             for(i = 0; i < 255; i++){
 	CLR  R5
 _0x8:
 	LDI  R30,LOW(255)
 	CP   R5,R30
 	BRSH _0x9
-; 0000 0067                 if(PINB.0 == 0)
+; 0000 0067                 if(PINB.0 == 0){
 	SBIC 0x16,0
 	RJMP _0xA
 ; 0000 0068                     ++conteo;
 	MOVW R30,R6
 	ADIW R30,1
 	MOVW R6,R30
-; 0000 0069 
-; 0000 006A                 delay_us(29);
+; 0000 0069                     delay_us(17);
+	__DELAY_USB 6
+; 0000 006A                 }else{
+	RJMP _0xB
 _0xA:
-	__DELAY_USB 10
-; 0000 006B             }
+; 0000 006B                     delay_us(22);
+	__DELAY_USB 7
+; 0000 006C                 }
+_0xB:
+; 0000 006D             }
 	INC  R5
 	RJMP _0x8
 _0x9:
-; 0000 006C 
-; 0000 006D             if(conteo >= 70){
+; 0000 006E 
+; 0000 006F             if(conteo >= 100){
 	RCALL SUBOPT_0x0
-	BRLO _0xB
-; 0000 006E                PORTA.0 = 1;
+	BRLO _0xC
+; 0000 0070                PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 006F             }else if(conteo >= 20 && conteo < 70){
-	RJMP _0xE
-_0xB:
-	RCALL SUBOPT_0x1
-	BRLO _0x10
-	RCALL SUBOPT_0x0
-	BRLO _0x11
-_0x10:
+; 0000 0071             }else if(conteo >= 55 && conteo < 100){
 	RJMP _0xF
-_0x11:
-; 0000 0070                 PORTA.1 = 1;
-	SBI  0x1B,1
-; 0000 0071             }else if(conteo >= 4 && conteo < 20){
-	RJMP _0x14
-_0xF:
-	LDI  R30,LOW(4)
-	LDI  R31,HIGH(4)
+_0xC:
+	LDI  R30,LOW(55)
+	LDI  R31,HIGH(55)
 	CP   R6,R30
 	CPC  R7,R31
-	BRLO _0x16
-	RCALL SUBOPT_0x1
-	BRLO _0x17
-_0x16:
+	BRLO _0x11
+	RCALL SUBOPT_0x0
+	BRLO _0x12
+_0x11:
+	RJMP _0x10
+_0x12:
+; 0000 0072                 PORTA.1 = 1;
+	SBI  0x1B,1
+; 0000 0073             }else if(conteo >= 10 && conteo < 50){
 	RJMP _0x15
+_0x10:
+	LDI  R30,LOW(10)
+	LDI  R31,HIGH(10)
+	CP   R6,R30
+	CPC  R7,R31
+	BRLO _0x17
+	LDI  R30,LOW(50)
+	LDI  R31,HIGH(50)
+	CP   R6,R30
+	CPC  R7,R31
+	BRLO _0x18
 _0x17:
-; 0000 0072                 PORTA.2 = 1;
+	RJMP _0x16
+_0x18:
+; 0000 0074                 PORTA.2 = 1;
 	SBI  0x1B,2
-; 0000 0073             }
-; 0000 0074 
-; 0000 0075 
-; 0000 0076             PORTD = conteo;
+; 0000 0075             }else{
+	RJMP _0x1B
+_0x16:
+; 0000 0076                 PORTA.3 = 1;
+	SBI  0x1B,3
+; 0000 0077             }
+_0x1B:
 _0x15:
-_0x14:
-_0xE:
+_0xF:
+; 0000 0078 
+; 0000 0079 
+; 0000 007A             PORTD = conteo;
 	OUT  0x12,R6
-; 0000 0077             delay_ms(1000);
+; 0000 007B             delay_ms(1000);
 	LDI  R26,LOW(1000)
 	LDI  R27,HIGH(1000)
 	RCALL _delay_ms
-; 0000 0078             PORTA.0 = 0;
+; 0000 007C             PORTA.0 = 0;
 	CBI  0x1B,0
-; 0000 0079             PORTA.1 = 0;
+; 0000 007D             PORTA.1 = 0;
 	CBI  0x1B,1
-; 0000 007A             PORTA.2 = 0;
+; 0000 007E             PORTA.2 = 0;
 	CBI  0x1B,2
-; 0000 007B             PORTA.3 = 0;
+; 0000 007F             PORTA.3 = 0;
 	CBI  0x1B,3
-; 0000 007C             PORTD = 0;
+; 0000 0080             PORTD = 0;
 	LDI  R30,LOW(0)
 	OUT  0x12,R30
-; 0000 007D             conteo = 0;
+; 0000 0081             conteo = 0;
 	CLR  R6
 	CLR  R7
-; 0000 007E         }else {
-	RJMP _0x22
+; 0000 0082         }else {
+	RJMP _0x26
 _0x6:
-; 0000 007F             conteo = 0;
+; 0000 0083             conteo = 0;
 	CLR  R6
 	CLR  R7
-; 0000 0080             PORTC = 0;
+; 0000 0084             PORTC = 0;
 	LDI  R30,LOW(0)
 	OUT  0x15,R30
-; 0000 0081             PORTA = 0;
+; 0000 0085             PORTA = 0;
 	OUT  0x1B,R30
-; 0000 0082         }
-_0x22:
-; 0000 0083     }
+; 0000 0086         }
+_0x26:
+; 0000 0087     }
 	RJMP _0x3
-; 0000 0084 }
-_0x23:
-	RJMP _0x23
+; 0000 0088 }
+_0x27:
+	RJMP _0x27
 ; .FEND
 
 	.CSEG
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
 SUBOPT_0x0:
-	LDI  R30,LOW(70)
-	LDI  R31,HIGH(70)
-	CP   R6,R30
-	CPC  R7,R31
-	RET
-
-;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x1:
-	LDI  R30,LOW(20)
-	LDI  R31,HIGH(20)
+	LDI  R30,LOW(100)
+	LDI  R31,HIGH(100)
 	CP   R6,R30
 	CPC  R7,R31
 	RET

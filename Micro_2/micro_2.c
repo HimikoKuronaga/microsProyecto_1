@@ -98,20 +98,24 @@ TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
     while (1){  
     
         if(PINB.1 == 0){
-        
+            delay_us(10);
             for(i = 0; i < 255; i++){  
-                if(PINB.0 == 0)
+                if(PINB.0 == 0){
                     ++conteo;
-                
-                delay_us(29);
+                    delay_us(17);
+                }else{
+                    delay_us(22);
+                }
             }
             
-            if(conteo >= 70){
+            if(conteo >= 100){
                PORTA.0 = 1;
-            }else if(conteo >= 20 && conteo < 70){
+            }else if(conteo >= 55 && conteo < 100){
                 PORTA.1 = 1;
-            }else if(conteo >= 4 && conteo < 20){
+            }else if(conteo >= 10 && conteo < 50){
                 PORTA.2 = 1;
+            }else{
+                PORTA.3 = 1;
             }
         
             

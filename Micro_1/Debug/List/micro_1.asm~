@@ -1364,8 +1364,8 @@ _0x9:
 ; 0000 008D                 delay_us(1);
 ; 0000 008E                 PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 008F                 delay_us(16);
-	__DELAY_USB 5
+; 0000 008F                 delay_us(6);
+	__DELAY_USB 2
 ; 0000 0090             }
 	RJMP _0x9
 _0xB:
@@ -1391,8 +1391,8 @@ _0x16:
 ; 0000 0099                 delay_us(1);
 ; 0000 009A                 PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 009B                 delay_us(74);
-	__DELAY_USB 25
+; 0000 009B                 delay_us(44);
+	__DELAY_USB 15
 ; 0000 009C             }
 	RJMP _0x16
 _0x18:
@@ -1417,8 +1417,8 @@ _0x23:
 ; 0000 00A4                 delay_us(1);
 ; 0000 00A5                 PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 00A6                 delay_us(196);
-	__DELAY_USB 65
+; 0000 00A6                 delay_us(74);
+	__DELAY_USB 25
 ; 0000 00A7             }
 	RJMP _0x23
 _0x25:
@@ -1443,8 +1443,8 @@ _0x30:
 ; 0000 00AF                 delay_us(1);
 ; 0000 00B0                 PORTA.0 = 1;
 	SBI  0x1B,0
-; 0000 00B1                 delay_us(373);
-	__DELAY_USB 124
+; 0000 00B1                 delay_us(105);
+	__DELAY_USB 35
 ; 0000 00B2             }
 	RJMP _0x30
 _0x32:
